@@ -45,7 +45,7 @@ if model_type == "Bank Customer":
 
     # Check for empty inputs
     if st.button("Predict"):
-        if (credit_score == 0 or age == 0 or tenure == 0 or
+        if (credit_score == 0 or age == 0 or tenure == 0 or balance == 0 or
             num_of_products == 0 or estimated_salary == 0 or satisfaction_score == 0 or points_earned == 0):
             st.error("Please fill in all the fields correctly before submitting.")
         else:
