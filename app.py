@@ -29,26 +29,26 @@ if model_type == "Bank Customer":
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.number_input("Age", min_value=18, max_value=100)
     tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
-    balance = st.number_input("Balance", min_value=0, step=1)
+    balance = st.number_input("Balance")
     num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
-    has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    has_cr_card = st.radio("Has Credit Card?", [0, 1])
+    is_active_member = st.radio("Is Active Member?", [0, 1])
     estimated_salary = st.number_input("Estimated Salary")
     satisfaction_score = st.slider("Satisfaction Score", 1, 5)
     card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
     points_earned = st.number_input("Points Earned", min_value=0)
 
-    # Check for empty inputs
+    # Ensure all required fields are filled and correct types are provided
     if st.button("Predict"):
-        if (credit_score == 0 or age == 0 or tenure == 0 or (balance == 0) or 
-            num_of_products == 0 or estimated_salary == 0 or satisfaction_score == 0 or points_earned == 0):
-            st.error("Please fill in all the fields correctly before submitting.")
+        if not (credit_score and age and tenure and balance and num_of_products and estimated_salary):
+            st.error("Please fill all the numeric fields correctly.")
+        elif not (geography and gender and card_type):
+            st.error("Please fill all categorical fields correctly.")
         else:
             # One-hot Encoding
             geography_encoded = [1 if geography == "France" else 0, 1 if geography == "Germany" else 0, 1 if geography == "Spain" else 0]
             gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
-            card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 
-                                 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
+            card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
 
             # Create Feature Array
             features = np.array([credit_score, age, tenure, balance, num_of_products,
@@ -68,32 +68,31 @@ elif model_type == "Telecom Customer":
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-    paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    senior_citizen = st.radio("Senior Citizen?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    streaming_tv = st.radio("Streaming TV?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    streaming_movies = st.radio("Streaming Movies?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    multiple_lines = st.radio("Multiple Lines?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    phone_service = st.radio("Phone Service?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    device_protection = st.radio("Device Protection?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    online_backup = st.radio("Online Backup?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    partner = st.radio("Partner?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    dependents = st.radio("Dependents?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    tech_support = st.radio("Tech Support?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
-    online_security = st.radio("Online Security?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    paperless_billing = st.radio("Paperless Billing?", [0, 1])
+    senior_citizen = st.radio("Senior Citizen?", [0, 1])
+    streaming_tv = st.radio("Streaming TV?", [0, 1])
+    streaming_movies = st.radio("Streaming Movies?", [0, 1])
+    multiple_lines = st.radio("Multiple Lines?", [0, 1])
+    phone_service = st.radio("Phone Service?", [0, 1])
+    device_protection = st.radio("Device Protection?", [0, 1])
+    online_backup = st.radio("Online Backup?", [0, 1])
+    partner = st.radio("Partner?", [0, 1])
+    dependents = st.radio("Dependents?", [0, 1])
+    tech_support = st.radio("Tech Support?", [0, 1])
+    online_security = st.radio("Online Security?", [0, 1])
     gender = st.selectbox("Gender", ["Male", "Female"])
 
-    # Check for empty inputs
+    # Ensure all required fields are filled and correct types are provided
     if st.button("Predict"):
-        if (monthly_charges == 0 or total_charges == 0 or tenure == 0):
-            st.error("Please fill in all the fields correctly before submitting.")
+        if not (monthly_charges and total_charges and tenure):
+            st.error("Please fill all the numeric fields correctly.")
+        elif not (contract and internet_service and payment_method and gender):
+            st.error("Please fill all categorical fields correctly.")
         else:
             # One-hot Encoding
             contract_encoded = [1 if contract == "Month-to-month" else 0, 1 if contract == "One year" else 0, 1 if contract == "Two year" else 0]
-            internet_service_encoded = [1 if internet_service == "Fiber optic" else 0, 
-                                        1 if internet_service == "DSL" else 0, 1 if internet_service == "No" else 0]
-            payment_method_encoded = [1 if payment_method == "Electronic check" else 0, 
-                                      1 if payment_method == "Mailed check" else 0, 1 if payment_method == "Bank transfer (automatic)" else 0, 
-                                      1 if payment_method == "Credit card (automatic)" else 0]
+            internet_service_encoded = [1 if internet_service == "Fiber optic" else 0, 1 if internet_service == "DSL" else 0, 1 if internet_service == "No" else 0]
+            payment_method_encoded = [1 if payment_method == "Electronic check" else 0, 1 if payment_method == "Mailed check" else 0, 1 if payment_method == "Bank transfer (automatic)" else 0, 1 if payment_method == "Credit card (automatic)" else 0]
             gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
 
             # Feature Array
