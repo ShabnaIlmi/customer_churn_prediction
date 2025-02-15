@@ -42,8 +42,8 @@ if model_type == "Bank Customer":
     tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
     balance = st.number_input("Balance")
     num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
-    has_cr_card = st.radio("Has Credit Card?", ["Yes", "No"])
-    is_active_member = st.radio("Is Active Member?", ["Yes", "No"])
+    has_cr_card = 1 if st.radio("Has Credit Card?", ["Yes", "No"]) == "Yes" else 0
+    is_active_member = 1 if st.radio("Is Active Member?", ["Yes", "No"]) == "Yes" else 0
     estimated_salary = st.number_input("Estimated Salary")
     satisfaction_score = st.slider("Satisfaction Score", 1, 5)
     card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
