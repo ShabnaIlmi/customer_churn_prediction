@@ -3,8 +3,8 @@ import numpy as np
 import joblib
 
 # Load models and scalers
-bank_model = joblib.load("/random_forest_bank_model.pkl")
-telecom_model = joblib.load("/random_forest_telecom_model.pkl")
+bank_model = joblib.load("random_forest_bank_model.pkl")
+telecom_model = joblib.load("random_forest_telecom_model.pkl")
 bank_scaler = joblib.load("scaler_bank.pkl")
 telecom_scaler = joblib.load("scaler_telecom.pkl")
 
