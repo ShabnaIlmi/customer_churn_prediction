@@ -29,10 +29,10 @@ if model_type == "Bank Customer":
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.number_input("Age", min_value=18, max_value=100)
     tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
-    balance = st.number_input("Balance")
+    balance = st.number_input("Balance", min_value=0, step=1)
     num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
-    has_cr_card = st.radio("Has Credit Card?", [0, 1])
-    is_active_member = st.radio("Is Active Member?", [0, 1])
+    has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
     estimated_salary = st.number_input("Estimated Salary")
     satisfaction_score = st.slider("Satisfaction Score", 1, 5)
     card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
@@ -40,7 +40,7 @@ if model_type == "Bank Customer":
 
     # Check for empty inputs
     if st.button("Predict"):
-        if (credit_score == 0 or age == 0 or tenure == 0 or balance == 0 or 
+        if (credit_score == 0 or age == 0 or tenure == 0 or (balance == 0) or 
             num_of_products == 0 or estimated_salary == 0 or satisfaction_score == 0 or points_earned == 0):
             st.error("Please fill in all the fields correctly before submitting.")
         else:
@@ -68,18 +68,18 @@ elif model_type == "Telecom Customer":
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-    paperless_billing = st.radio("Paperless Billing?", [0, 1])
-    senior_citizen = st.radio("Senior Citizen?", [0, 1])
-    streaming_tv = st.radio("Streaming TV?", [0, 1])
-    streaming_movies = st.radio("Streaming Movies?", [0, 1])
-    multiple_lines = st.radio("Multiple Lines?", [0, 1])
-    phone_service = st.radio("Phone Service?", [0, 1])
-    device_protection = st.radio("Device Protection?", [0, 1])
-    online_backup = st.radio("Online Backup?", [0, 1])
-    partner = st.radio("Partner?", [0, 1])
-    dependents = st.radio("Dependents?", [0, 1])
-    tech_support = st.radio("Tech Support?", [0, 1])
-    online_security = st.radio("Online Security?", [0, 1])
+    paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    senior_citizen = st.radio("Senior Citizen?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    streaming_tv = st.radio("Streaming TV?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    streaming_movies = st.radio("Streaming Movies?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    multiple_lines = st.radio("Multiple Lines?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    phone_service = st.radio("Phone Service?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    device_protection = st.radio("Device Protection?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    online_backup = st.radio("Online Backup?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    partner = st.radio("Partner?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    dependents = st.radio("Dependents?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    tech_support = st.radio("Tech Support?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
+    online_security = st.radio("Online Security?", [0, 1], format_func=lambda x: 'Yes' if x == 1 else 'No')
     gender = st.selectbox("Gender", ["Male", "Female"])
 
     # Check for empty inputs
