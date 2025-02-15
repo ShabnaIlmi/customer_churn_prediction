@@ -29,21 +29,19 @@ if model_type == "Bank Customer":
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.number_input("Age", min_value=18, max_value=100)
     tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
-    balance = st.number_input("Balance")
+    balance = st.number_input("Balance", min_value=0.0)
     num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
     has_cr_card = st.radio("Has Credit Card?", [0, 1])
     is_active_member = st.radio("Is Active Member?", [0, 1])
-    estimated_salary = st.number_input("Estimated Salary")
+    estimated_salary = st.number_input("Estimated Salary", min_value=0.0)
     satisfaction_score = st.slider("Satisfaction Score", 1, 5)
     card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
     points_earned = st.number_input("Points Earned", min_value=0)
 
-    # Ensure all required fields are filled and correct types are provided
+    # Ensure all required fields are filled correctly
     if st.button("Predict"):
-        if not (credit_score and age and tenure and balance and num_of_products and estimated_salary):
-            st.error("Please fill all the numeric fields correctly.")
-        elif not (geography and gender and card_type):
-            st.error("Please fill all categorical fields correctly.")
+        if not all([credit_score, age, tenure is not None, num_of_products, estimated_salary]):
+            st.error("Please fill all required numeric fields correctly.")
         else:
             # One-hot Encoding
             geography_encoded = [1 if geography == "France" else 0, 1 if geography == "Germany" else 0, 1 if geography == "Spain" else 0]
@@ -63,8 +61,8 @@ elif model_type == "Telecom Customer":
 
     # Input fields with validation
     tenure = st.number_input("Tenure", min_value=0, max_value=100)
-    monthly_charges = st.number_input("Monthly Charges")
-    total_charges = st.number_input("Total Charges")
+    monthly_charges = st.number_input("Monthly Charges", min_value=0.0)
+    total_charges = st.number_input("Total Charges", min_value=0.0)
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
@@ -82,12 +80,10 @@ elif model_type == "Telecom Customer":
     online_security = st.radio("Online Security?", [0, 1])
     gender = st.selectbox("Gender", ["Male", "Female"])
 
-    # Ensure all required fields are filled and correct types are provided
+    # Ensure all required fields are filled correctly
     if st.button("Predict"):
-        if not (monthly_charges and total_charges and tenure):
-            st.error("Please fill all the numeric fields correctly.")
-        elif not (contract and internet_service and payment_method and gender):
-            st.error("Please fill all categorical fields correctly.")
+        if not all([tenure is not None, monthly_charges, total_charges]):
+            st.error("Please fill all required numeric fields correctly.")
         else:
             # One-hot Encoding
             contract_encoded = [1 if contract == "Month-to-month" else 0, 1 if contract == "One year" else 0, 1 if contract == "Two year" else 0]
