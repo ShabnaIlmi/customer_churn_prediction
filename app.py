@@ -25,7 +25,7 @@ if model_type == "Bank Customer":
 
     # Input fields
     credit_score = st.number_input("Credit Score", min_value=300, max_value=900, step=1)
-    geography = st.selectbox("Geography", ["France", "Germany", "Spain"])
+    geography = st.selectbox("Geography", ["France", "Germany", "Spain", "Italy", "United Kingdom", "United States", "Canada", "Australia", "India", "China"])
     gender = st.selectbox("Gender", ["Male", "Female"])
     age = st.number_input("Age", min_value=18, max_value=100)
     tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
@@ -39,7 +39,7 @@ if model_type == "Bank Customer":
     points_earned = st.number_input("Points Earned", min_value=0)
 
     # One-hot Encoding
-    geography_encoded = [1 if geography == "France" else 0, 1 if geography == "Germany" else 0, 1 if geography == "Spain" else 0]
+    geography_encoded = [1 if geography == country else 0 for country in ["France", "Germany", "Spain", "Italy", "United Kingdom", "United States", "Canada", "Australia", "India", "China"]]
     gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
     card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
 
