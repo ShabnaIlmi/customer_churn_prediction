@@ -90,18 +90,18 @@ elif model_type == "Telecom Customer":
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-    paperless_billing = 1 if st.radio("Paperless Billing?", ["Yes", "No"]) == "Yes" else 0)
-    senior_citizen = 1 if st.radio("Senior Citizen?", ["Yes", "No"]) == "Yes" else 0)
-    streaming_tv = 1 if st.radio("Streaming TV?", ["Yes", "No"]) == "Yes" else 0)
-    streaming_movies = 1 if st.radio("Streaming Movies?", ["Yes", "No"]) == "Yes" else 0)
-    multiple_lines = 1 if st.radio("Multiple Lines?", ["Yes", "No"]) == "Yes" else 0)
-    phone_service = 1 if st.radio("Phone Service?", ["Yes", "No"]) == "Yes" else 0)
-    device_protection = 1 if st.radio("Device Protection?", ["Yes", "No"]) == "Yes" else 0)
-    online_backup = 1 if st.radio("Online Backup?", ["Yes", "No"]) == "Yes" else 0)
-    partner = 1 if st.radio("Partner?", ["Yes", "No"]) == "Yes" else 0)
-    dependents = 1 if st.radio("Dependents?", ["Yes", "No"]) == "Yes" else 0)
-    tech_support = 1 if st.radio("Tech Support?", ["Yes", "No"]) == "Yes" else 0)
-    online_security = 1 if st.radio("Online Security?", ["Yes", "No"]) == "Yes" else 0)
+    paperless_billing = 1 if st.radio("Paperless Billing?", ["Yes", "No"]) == "Yes" else 0
+    senior_citizen = 1 if st.radio("Senior Citizen?", ["Yes", "No"]) == "Yes" else 0
+    streaming_tv = 1 if st.radio("Streaming TV?", ["Yes", "No"]) == "Yes" else 0
+    streaming_movies = 1 if st.radio("Streaming Movies?", ["Yes", "No"]) == "Yes" else 0
+    multiple_lines = 1 if st.radio("Multiple Lines?", ["Yes", "No"]) == "Yes" else 0
+    phone_service = 1 if st.radio("Phone Service?", ["Yes", "No"]) == "Yes" else 0
+    device_protection = 1 if st.radio("Device Protection?", ["Yes", "No"]) == "Yes" else 0
+    online_backup = 1 if st.radio("Online Backup?", ["Yes", "No"]) == "Yes" else 0
+    partner = 1 if st.radio("Partner?", ["Yes", "No"]) == "Yes" else 0
+    dependents = 1 if st.radio("Dependents?", ["Yes", "No"]) == "Yes" else 0
+    tech_support = 1 if st.radio("Tech Support?", ["Yes", "No"]) == "Yes" else 0
+    online_security = 1 if st.radio("Online Security?", ["Yes", "No"]) == "Yes" else 0
     gender = st.selectbox("Gender", ["Male", "Female"])
 
     inputs = {
