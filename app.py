@@ -77,18 +77,21 @@ elif model_type == "Telecom Customer":
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
     internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-    paperless_billing = st.radio("Paperless Billing?", [0, 1])
-    senior_citizen = st.radio("Senior Citizen?", [0, 1])
-    streaming_tv = st.radio("Streaming TV?", [0, 1])
-    streaming_movies = st.radio("Streaming Movies?", [0, 1])
-    multiple_lines = st.radio("Multiple Lines?", [0, 1])
-    phone_service = st.radio("Phone Service?", [0, 1])
-    device_protection = st.radio("Device Protection?", [0, 1])
-    online_backup = st.radio("Online Backup?", [0, 1])
-    partner = st.radio("Partner?", [0, 1])
-    dependents = st.radio("Dependents?", [0, 1])
-    tech_support = st.radio("Tech Support?", [0, 1])
-    online_security = st.radio("Online Security?", [0, 1])
+    
+    # Changed to Yes/No for easier selection
+    paperless_billing = st.radio("Paperless Billing?", ["Yes", "No"])
+    senior_citizen = st.radio("Senior Citizen?", ["Yes", "No"])
+    streaming_tv = st.radio("Streaming TV?", ["Yes", "No"])
+    streaming_movies = st.radio("Streaming Movies?", ["Yes", "No"])
+    multiple_lines = st.radio("Multiple Lines?", ["Yes", "No"])
+    phone_service = st.radio("Phone Service?", ["Yes", "No"])
+    device_protection = st.radio("Device Protection?", ["Yes", "No"])
+    online_backup = st.radio("Online Backup?", ["Yes", "No"])
+    partner = st.radio("Partner?", ["Yes", "No"])
+    dependents = st.radio("Dependents?", ["Yes", "No"])
+    tech_support = st.radio("Tech Support?", ["Yes", "No"])
+    online_security = st.radio("Online Security?", ["Yes", "No"])
+    
     gender = st.selectbox("Gender", ["Male", "Female", "Rather Not Say"])
 
     # Check for empty inputs
@@ -114,6 +117,20 @@ elif model_type == "Telecom Customer":
             
             # One-hot Encoding for Gender
             gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0, 1 if gender == "Rather Not Say" else 0]
+
+            # Convert Yes/No to 1/0
+            paperless_billing = 1 if paperless_billing == "Yes" else 0
+            senior_citizen = 1 if senior_citizen == "Yes" else 0
+            streaming_tv = 1 if streaming_tv == "Yes" else 0
+            streaming_movies = 1 if streaming_movies == "Yes" else 0
+            multiple_lines = 1 if multiple_lines == "Yes" else 0
+            phone_service = 1 if phone_service == "Yes" else 0
+            device_protection = 1 if device_protection == "Yes" else 0
+            online_backup = 1 if online_backup == "Yes" else 0
+            partner = 1 if partner == "Yes" else 0
+            dependents = 1 if dependents == "Yes" else 0
+            tech_support = 1 if tech_support == "Yes" else 0
+            online_security = 1 if online_security == "Yes" else 0
 
             # Feature Array
             features = np.array([paperless_billing, senior_citizen, streaming_tv, streaming_movies,
