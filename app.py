@@ -98,5 +98,5 @@ user_data_scaled = scaler_loaded.transform(user_data)
 # Make Prediction
 prediction = rf_model_loaded.predict(user_data_scaled)
 
-# Display Result
+# Displaying Result
 print("\nPredicted Churn Status:\n", "Churned" if prediction[0] == 1 else "Not Churned")
