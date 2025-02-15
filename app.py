@@ -37,7 +37,7 @@ if model_type == "Bank Customer":
     balance = st.number_input("Balance", value=0)  # Default to 0 to handle empty balance
     num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
     has_cr_card = st.radio("Has Credit Card?", ["Yes", "No"])  # 0 = No, 1 = Yes
-    is_active_member = st.radio("Is Active Member?", "Yes", "No"])  # 0 = No, 1 = Yes
+    is_active_member = st.radio("Is Active Member?", ["Yes", "No"])  # 0 = No, 1 = Yes
     estimated_salary = st.number_input("Estimated Salary")
     satisfaction_score = st.slider("Satisfaction Score", 1, 5)
     card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
