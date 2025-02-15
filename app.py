@@ -92,7 +92,7 @@ elif model_type == "Telecom Customer":
     payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
     paperless_billing = st.radio("Paperless Billing?", ["Yes", "No"])
     senior_citizen = st.radio("Senior Citizen?", ["Yes", "No"])
-    streaming_tv = st.radio("Streaming TV?", ["Yes", "No")
+    streaming_tv = st.radio("Streaming TV?", ["Yes", "No"])
     streaming_movies = st.radio("Streaming Movies?", ["Yes", "No"])
     multiple_lines = st.radio("Multiple Lines?", ["Yes", "No"])
     phone_service = st.radio("Phone Service?", ["Yes", "No"])
